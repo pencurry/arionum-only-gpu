@@ -13,42 +13,6 @@ If you do not want to compile the project by yourself, you can find up to date r
 
 https://bitbucket.org/cryptogone/arionum-gpu-miner/downloads/
 
-## Simple Ubuntu install config & run
-
-Here is a typical list of shell commands needed to install on Ubuntu (parts starting with a `#` are comments, do not type them !)
-
-I assume this is for a Nvidia card, for AMD card just replace `run_CUDA.sh` with `run_OpenCL.sh` and skip nvidia drivers installation
-
-I also assume this is for Ubuntu 16, if you want to install on another Ubuntu version (17 or 18), 
-then use another binary url for the `wget` command, all binaries are [here](https://bitbucket.org/cryptogone/arionum-gpu-miner/downloads/)
-
-    # update list of known packages
-    sudo apt-get update
-
-    # install nvidia drivers (only needed if you have a NVidia GPU)
-    sudo ubuntu-drivers autoinstall
-
-    # install required packages
-    sudo apt-get -y install wget libcpprest libboost-all-dev ocl-icd-opencl-dev
-
-    # create a folder to put the miner in, and go inside it
-    mkdir arionum-gpu-miner
-    cd arionum-gpu-miner
-
-    # download latest binary archive, make sure that you use the correct url for your Ubuntu version (16, 17, 18 ...)
-    wget -O arionum-gpu-miner.tar.gz "https://bitbucket.org/cryptogone/arionum-gpu-miner/downloads/arionum-gpu-miner-v1.5.1-ubuntu16-cuda9.0.tar.gz"
-
-    # extract archive 
-    tar xzvf arionum-gpu-miner.tar.gz
-
-    # edit the run script to fit your needs:
-    # (set wallet address, worker name, number of batches & threads, eventually change -u to -d if you want to use specific devices)
-    # when done, press CTRL+X to exit nano text editor, press Y to save changes
-    nano run_CUDA.sh
-
-    # finally you can the miner
-    ./run_CUDA.sh
-
 ## How to use
 
 1. Either compile yourself or get prebuilt binaries (see above)
@@ -155,13 +119,23 @@ First, install CUDA SDK (https://developer.nvidia.com/cuda-downloads).
 Then use the following commands:
 
     sudo apt-get install git
-    git clone https://bitbucket.org/cryptogone/arionum-gpu-miner.git
-    cd arionum-gpu-miner
+    git clone https://github.com/pencurry/arionum-only-gpu
+    cd arionum-only-gpu
     ./setup_libs.sh linux
     ./setup_submodules.sh
     ./gen_prj.sh linux
     ./make_release_linux.sh
 
+
+
+    cd rel
+    # edit the run script to fit your needs:
+    # (set wallet address, worker name, number of batches & threads, eventually change -u to -d if you want to use specific devices)
+    # when done, press CTRL+X to exit nano text editor, press Y to save changes
+    nano run_CUDA.sh
+    # finally you can the miner
+    ./run_CUDA.sh
+    
 Once done, binaries are put in the `rel/`folder.
 
 Note that `setup_libs.sh` may ask you for your password as it needs to install some packages with `apt-get`
