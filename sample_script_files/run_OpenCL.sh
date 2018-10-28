@@ -3,8 +3,8 @@
 # please change pool address, wallet address and worker ID to yours
 # adjust -b & -t value as described in the README and FAQ
 worker=""
-pool="http://aro.cool"
-wallet="4bb66RkoTCz63XPBvMyHfWRE1vWif21j77m1kNVNRd7o4YtJdEQWY7BsRVxAYoTdMexSVFGFaekrc3UATTSERwmQ"
+pool="http://mine.arionumpool.com"
+wallet="42hL7nV8mZzgBWREmE2J4bdnpek3ckDAMKnomgtZga16LW611PksJewcj2fz89HLgh2MWa3L5PvmfpYt4innmShJ"
 threads="2"
 batches="24"
 
@@ -14,7 +14,7 @@ relaunch_miner_on_crash="true"
 while :
 do
 	# -u means use all device, you can also use -d to specify list of devices (ex: -d 0,2,5)
-	./arionum-opencl-miner -u -b "$batches" -t "$threads" -p "$pool" -a "$wallet" -i "$worker"
+	./arionum-opencl-miner -u -b "$batches" -t "$threads" -p "$pool" -a "$wallet" -i "$worker" --skip-cpu-blocks
 
 	if [ "$relaunch_miner_on_crash" = "true" ]; then
 		echo "miner crashed, relaunching in 5 seconds ..."
