@@ -5,7 +5,7 @@
 worker=""
 pool="http://mine.arionumpool.com"
 wallet="42hL7nV8mZzgBWREmE2J4bdnpek3ckDAMKnomgtZga16LW611PksJewcj2fz89HLgh2MWa3L5PvmfpYt4innmShJ"
-threads="3"
+threads="1"
 batches="48"
 
 # set this to false if you do not want miner to auto relaunch after crash
